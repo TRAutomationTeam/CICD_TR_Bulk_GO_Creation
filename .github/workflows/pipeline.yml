@@ -8,7 +8,7 @@ on:
 
 # Here the environment variable is declared in workflow level
 env: 
-  name: live
+  name: Live
   # Replace with your Orchestrator Values 
   PROJECT_NAME: CICD_TR_Bulk_GO_Creation
   PROJECT_FOLDER: ${{ github.action_path }}
