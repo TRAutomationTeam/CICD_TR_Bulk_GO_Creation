@@ -4,7 +4,7 @@ name: Development workflow
 on:
   push:
     branches:
-      - dev
+      - main
 
 # Here the environment variable is declared in workflow level
 env:
@@ -65,7 +65,7 @@ jobs:
       steps:
         - name: run Package
           shell: powershell
-          run: ${{ github.workspace }}\scripts\UiPathJobRun.ps1 CICD_GFR_SanityTest ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -userKey ${{env.ORCH_USER_KEY}} -accountName ${{env.ORCH_ACC_NAME}} -folder_organization_unit Unattended -machine e2-dev-upth01 -robots minal-unattended
+          run: ${{ github.workspace }}\scripts\UiPathJobRun.ps1 CICD_TR_Bulk_ClientCreation_GO ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -userKey ${{env.ORCH_USER_KEY}} -accountName ${{env.ORCH_ACC_NAME}} -folder_organization_unit Unattended -machine e2-dev-upth01 -robots minal-unattended
 
   publish-uipath-nuget-package:
     needs: run-uipath-nuget-package
