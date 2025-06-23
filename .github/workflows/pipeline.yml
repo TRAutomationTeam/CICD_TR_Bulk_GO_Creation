@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build Nuget Package
         shell: powershell
-        run: ${{ github.workspace }}\scripts\UiPathPack.ps1 ${{ github.workspace }}\project.json -destination_folder ${{ github.workspace }}\package -autoVersion
+        run: ${{ github.workspace }}\scripts\UiPathPack.ps1 ${{ github.workspace }}\project.json -destination_folder ${{ github.workspace }}\package -autoVersion -uipathCliFilePath "C:\Automation Team\uipathcli"
       - name: Upload UiPath Artifacts
         uses: actions/upload-artifact@v4
         with:
