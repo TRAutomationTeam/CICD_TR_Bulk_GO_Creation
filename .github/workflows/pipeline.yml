@@ -60,9 +60,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Artifacts
-          path: |
-           package/*.*
-           scripts/*.ps1
+          path: package/*.nupkg # Only upload .nupkg files
                     
   run-uipath-nuget-package:
       needs: build-uipath-nuget-package
