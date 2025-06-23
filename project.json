@@ -1,5 +1,5 @@
 {
-  "name": "TR_Bulk_ClientCreation_GO",
+  "name": "CICD_TR_Bulk_ClientCreation_GO",
   "projectId": "cd2733a5-d538-444d-9ab7-7627e1536766",
   "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.1.0",
-  "projectVersion": "1.0.4",
+  "projectVersion": "1.0.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
