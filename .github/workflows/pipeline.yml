@@ -45,11 +45,11 @@ jobs:
     needs: cleaner
     runs-on: self-hosted
     environment: Live
-    env:
-      APP_ID: ${{ vars.DOMAIN_NAME }}
     steps: 
       - name: read environment variable
-        run: echo "My tenant value is ${APP_ID}"
+        run: echo "My tenant value is ${{ vars.DOMAIN_NAME }}"
+        env:
+           APP_ID: ${{ vars.DOMAIN_NAME }}
       - name: Check out repository code
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v4
