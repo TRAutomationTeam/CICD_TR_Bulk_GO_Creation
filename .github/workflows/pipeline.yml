@@ -44,7 +44,12 @@ jobs:
     # You should be able to run on windows 2019 or windows latest
     needs: cleaner
     runs-on: self-hosted
+    environment: Live
+    env:
+      APP_ID: ${{ secrets.UIPATH_TENANT_ID }}
     steps: 
+      - name: read environment variable
+        run: echo "My tenant value is $APP_ID"
       - name: Check out repository code
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v4
