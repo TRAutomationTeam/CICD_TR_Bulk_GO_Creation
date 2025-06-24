@@ -118,7 +118,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="InputToBeProcessedData" sap:VirtualizedContainerService.HintSize="983.2,6488.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="InputToBeProcessedData" sap:VirtualizedContainerService.HintSize="983.2,6371.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Config" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_InProgressData" />
@@ -129,7 +129,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="817.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Environment.UserName+&quot;_&quot;+Environment.MachineName]" />
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_Config]" DisplayName="Config " sap:VirtualizedContainerService.HintSize="817.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Config" WorkbookPath="[in_Config(&quot;BulkClientCreationFile&quot;).ToString]" />
     <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Config]" DisplayName="For Each Row in Config of Bulk Client Creation" sap:VirtualizedContainerService.HintSize="817.6,536.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
