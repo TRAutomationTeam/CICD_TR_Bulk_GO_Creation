@@ -1,7 +1,7 @@
 {
   "name": "CICD_TR_Bulk_ClientCreation_GO",
   "projectId": "cd2733a5-d538-444d-9ab7-7627e1536766",
-  "description": "Robotic Enterprise Framework7",
+  "description": "Robotic Enterprise Framework8",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.23.4]",
