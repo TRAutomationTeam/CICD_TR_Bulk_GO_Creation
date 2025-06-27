@@ -1,3 +1,3 @@
 Package - CICD_TR_Bulk_ClientCreation_GO
 Environment - LIVE
-Release Notes - June 27th Run1
+Release Notes - June 27th Run2
