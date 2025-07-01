@@ -116,6 +116,7 @@ jobs:
           foreach ($line in $config) {
             if ($line -match '^[ ]*UIPATH_CLI_PATH[ ]*-[ ]*(.+)$') { echo "UIPATH_CLI_PATH=$($Matches[1].Trim())" >> $env:GITHUB_ENV }
             if ($line -match '^[ ]*FOLDER_ORGANIZATION_UNIT[ ]*-[ ]*(.+)$') { echo "FOLDER_ORG_UNIT=$($Matches[1].Trim())" >> $env:GITHUB_ENV }
+            if ($line -match '^[ ]*FOLDER_DEPLOY_UNIT[ ]*-[ ]*(.+)$') { echo "FOLDER_DEPLOY_UNIT=$($Matches[1].Trim())" >> $env:GITHUB_ENV }
           }
       - name: Publish Nuget Package to DEV
         shell: powershell
