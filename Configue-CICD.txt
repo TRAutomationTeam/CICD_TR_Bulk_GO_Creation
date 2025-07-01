@@ -1,3 +1,9 @@
-Package - CICD_TR_Bulk_ClientCreation_GO
-Environment - LIVE
-Release Notes - July 6
+PROJECT_NAME - CICD_TR_Bulk_GO_Creation
+ENVIRONMENT - LIVE
+RELEASE_NOTES - July 6
+BRANCH - main
+UIPATH_CLI_PATH - C:\uipathcli\23.10.8753.32995\tools\uipcli.exe
+FOLDER_ORGANIZATION_UNIT - Automation
+MACHINE - e2-dev-upth01
+ROBOT - minal-unattended
+TIMEOUT_SEC - 6000
