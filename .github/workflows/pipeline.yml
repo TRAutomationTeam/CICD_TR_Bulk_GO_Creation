@@ -42,12 +42,7 @@ jobs:
     # You should be able to run on windows 2019 or windows latest
     needs: cleaner
     runs-on: self-hosted
-    environment: Live
     steps: 
-      - name: read environment variable
-        run: echo "My tenant value is ${{ vars.DOMAIN_NAME }}"
-        env:
-           APP_ID: ${{ vars.DOMAIN_NAME }}
       - name: Check out repository code
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v4
