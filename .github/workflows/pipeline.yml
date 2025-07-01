@@ -3,12 +3,11 @@ name: Development workflow
 on:
   push:
     branches:
-      - ${{ env.BRANCH }}
+      - main
 
 # Here the environment variable is declared in workflow levels 
 env: 
   # Replace with your Orchestrator Values 
-  PROJECT_NAME: ${{ env.PROJECT_NAME }}
   PROJECT_FOLDER: ${{ github.action_path }}
   ORCH_URL: ${{ secrets.UIPATH_ORCH_URL }}
   ORCH_TENANT: ${{ secrets.UIPATH_TENANT_ID }}
