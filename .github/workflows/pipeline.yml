@@ -67,6 +67,13 @@ jobs:
         run: |
           $deploy = (Get-Content "${{ github.workspace }}/Configue-CICD.txt" | Where-Object { $_ -match '^DEPLOY[ ]*-[ ]*(.+)$' }) -replace '^DEPLOY[ ]*-[ ]*',''
           echo "deploy=$deploy" >> $env:GITHUB_OUTPUT
+      - name: Write ENVIRONMENT value to file
+        shell: pwsh
+        run: |
+          $envValue = (Get-Content "${{ github.workspace }}/Configue-CICD.txt" | Where-Object { $_ -match '^[ ]*ENVIRONMENT[ ]*-[ ]*(.+)$' }) -replace '^[ ]*ENVIRONMENT[ ]*-[ ]*',''
+          $outputPath = 'C:\Automation Team\CICD'
+          if (!(Test-Path $outputPath)) { New-Item -Path $outputPath -ItemType Directory -Force }
+          Set-Content -Path "$outputPath\environment.txt" -Value $envValue
 
   build-uipath-nuget-package:
     needs: [cleaner, config]
