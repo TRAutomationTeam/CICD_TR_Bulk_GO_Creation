@@ -73,6 +73,7 @@ jobs:
           $envValue = (Get-Content "${{ github.workspace }}/Configue-CICD.txt" | Where-Object { $_ -match '^[ ]*ENVIRONMENT[ ]*-[ ]*(.+)$' }) -replace '^[ ]*ENVIRONMENT[ ]*-[ ]*',''
           $outputPath = 'C:\Automation Team\CICD'
           if (!(Test-Path $outputPath)) { New-Item -Path $outputPath -ItemType Directory -Force }
+          Remove-Item -Path "$outputPath\environment.txt" -Force -ErrorAction SilentlyContinue
           Set-Content -Path "$outputPath\environment.txt" -Value $envValue
 
   build-uipath-nuget-package:
