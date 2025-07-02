@@ -100,7 +100,7 @@ jobs:
            scripts/*.ps1
                     
   run-uipath-nuget-package:
-      needs: [build-uipath-nuget-package, config]
+      needs: [config]
       if: needs.config.outputs.run == 'Yes'
       runs-on: self-hosted
       steps:
