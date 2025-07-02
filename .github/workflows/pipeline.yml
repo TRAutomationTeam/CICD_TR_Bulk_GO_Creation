@@ -36,9 +36,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Runner workspace path
+        shell: pwsh
         run: |
           echo "Cleaning up previous run"
-          rm -rf "${{ github.workspace }}"
+          Remove-Item -Path "${{ github.workspace }}" -Recurse -Force -ErrorAction SilentlyContinue
 
   config:
     runs-on: self-hosted
