@@ -107,7 +107,7 @@ jobs:
                     
   run-uipath-nuget-package:
       needs: [config, build-uipath-nuget-package]
-      if: needs.config.outputs.run == 'Yes'
+      if: needs.config.outputs.run == 'Yes' && (needs.build-uipath-nuget-package.result == 'skipped' || needs.build-uipath-nuget-package.result == 'success' || needs.build-uipath-nuget-package.result == null)
       runs-on: self-hosted
       steps:
         - name: Load config values from Configue-CICD.txt
