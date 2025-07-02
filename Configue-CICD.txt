@@ -1,4 +1,4 @@
-PROJECT_NAME - CICD_TR_Bulk_ClientCreation_GO
+PROJECT_NAME - GFR_SanityTest
 ENVIRONMENT - LIVE
 RELEASE_NOTES - July 6
 BRANCH - main
@@ -8,6 +8,6 @@ FOLDER_DEPLOY_UNIT - Unattended
 MACHINE - e2-dev-upth01
 ROBOT - minal-unattended
 TIMEOUT_SEC - 6000
-BUILD - Yes
+BUILD - No
 RUN - Yes
-DEPLOY - Yes
+DEPLOY - No
