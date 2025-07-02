@@ -8,6 +8,6 @@ FOLDER_DEPLOY_UNIT - Unattended
 MACHINE - e2-dev-upth01
 ROBOT - minal-unattended
 TIMEOUT_SEC - 6000
-BUILD - Yes
+BUILD - No
 RUN - Yes
-DEPLOY - Yes
+DEPLOY - No
