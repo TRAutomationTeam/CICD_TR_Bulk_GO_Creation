@@ -23,15 +23,15 @@ jobs:
     steps:
       - name: echo-default-env-variables
         run: |
-          echo "Home: ${HOME}"
-          echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
-          echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
-          echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
-          echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
-          echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
-          echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-          echo "GITHUB_SHA: ${GITHUB_SHA}"
-          echo "GITHUB_REF: ${GITHUB_REF}"
+          Write-Host "Home: $env:HOME"
+          Write-Host "GITHUB_WORKFLOW: $env:GITHUB_WORKFLOW"
+          Write-Host "GITHUB_ACTIONS: $env:GITHUB_ACTIONS"
+          Write-Host "GITHUB_ACTOR: $env:GITHUB_ACTOR"
+          Write-Host "GITHUB_REPOSITORY: $env:GITHUB_REPOSITORY"
+          Write-Host "GITHUB_EVENT_NAME: $env:GITHUB_EVENT_NAME"
+          Write-Host "GITHUB_WORKSPACE: $env:GITHUB_WORKSPACE"
+          Write-Host "GITHUB_SHA: $env:GITHUB_SHA"
+          Write-Host "GITHUB_REF: $env:GITHUB_REF"
   cleaner:
     runs-on: self-hosted
     steps:
