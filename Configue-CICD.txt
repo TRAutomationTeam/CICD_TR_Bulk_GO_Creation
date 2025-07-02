@@ -1,6 +1,6 @@
 PROJECT_NAME - CICD_TR_Bulk_ClientCreation_GO
 ENVIRONMENT - LIVE
-RELEASE_NOTES - July 6
+RELEASE_NOTES - July5
 BRANCH - main
 UIPATH_CLI_PATH - C:\uipathcli\23.10.8753.32995\tools\uipcli.exe
 FOLDER_ORGANIZATION_UNIT - Automation
