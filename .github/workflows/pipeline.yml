@@ -38,13 +38,40 @@ jobs:
           echo "Cleaning up previous run"
           rm -rf "${{ github.workspace }}"
 
+  config:
+    runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.get_build.outputs.build }}
+      run: ${{ steps.get_run.outputs.run }}
+      deploy: ${{ steps.get_deploy.outputs.deploy }}
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Get BUILD value from Configure-CICD.txt
+        id: get_build
+        shell: pwsh
+        run: |
+          $build = (Get-Content "${{ github.workspace }}/Configue-CICD.txt" | Where-Object { $_ -match '^BUILD[ ]*-[ ]*(.+)$' }) -replace '^BUILD[ ]*-[ ]*',''
+          echo "build=$build" >> $env:GITHUB_OUTPUT
+      - name: Get RUN value from Configure-CICD.txt
+        id: get_run
+        shell: pwsh
+        run: |
+          $run = (Get-Content "${{ github.workspace }}/Configue-CICD.txt" | Where-Object { $_ -match '^RUN[ ]*-[ ]*(.+)$' }) -replace '^RUN[ ]*-[ ]*',''
+          echo "run=$run" >> $env:GITHUB_OUTPUT
+      - name: Get DEPLOY value from Configure-CICD.txt
+        id: get_deploy
+        shell: pwsh
+        run: |
+          $deploy = (Get-Content "${{ github.workspace }}/Configue-CICD.txt" | Where-Object { $_ -match '^DEPLOY[ ]*-[ ]*(.+)$' }) -replace '^DEPLOY[ ]*-[ ]*',''
+          echo "deploy=$deploy" >> $env:GITHUB_OUTPUT
+
   build-uipath-nuget-package:
-    # You should be able to run on windows 2019 or windows latest
-    needs: cleaner
+    needs: [cleaner, config]
+    if: needs.config.outputs.build == 'Yes'
     runs-on: self-hosted
     steps: 
       - name: Check out repository code
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v4
       - name: Load config values from Configue-CICD.txt
         id: load_config
@@ -73,7 +100,8 @@ jobs:
            scripts/*.ps1
                     
   run-uipath-nuget-package:
-      needs: build-uipath-nuget-package
+      needs: [build-uipath-nuget-package, config]
+      if: needs.config.outputs.run == 'Yes'
       runs-on: self-hosted
       steps:
         - name: Load config values from Configue-CICD.txt
@@ -96,7 +124,8 @@ jobs:
           run: ${{ github.workspace }}\scripts\UiPathJobRun.ps1 ${{ env.PROJECT_NAME }} ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -userKey ${{env.ORCH_USER_KEY}} -accountName ${{env.ORCH_ACC_NAME}} -folder_organization_unit ${{ env.FOLDER_ORG_UNIT }} -machine ${{ env.MACHINE }} -robots ${{ env.ROBOT }} -uipathCliFilePath ${{ env.UIPATH_CLI_PATH }} -timeout ${{ env.TIMEOUT_SEC }}
 
   publish-uipath-nuget-package:
-    needs: run-uipath-nuget-package
+    needs: [run-uipath-nuget-package, config]
+    if: needs.config.outputs.deploy == 'Yes'
     runs-on: self-hosted
     steps: 
       - name: Download UiPath Artifacts
