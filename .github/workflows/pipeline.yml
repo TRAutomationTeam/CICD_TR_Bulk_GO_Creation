@@ -120,10 +120,10 @@ jobs:
               if ($line -match '^[ ]*TIMEOUT_SEC[ ]*-[ ]*(.+)$') { echo "TIMEOUT_SEC=$($Matches[1].Trim())" >> $env:GITHUB_ENV }
             }
         - name: run Package
-          shell: pwsh
+          shell: powershell
           run: |
-            Write-Host "PROJECT_NAME from config: $env:PROJECT_NAME"
-            & "$env:GITHUB_WORKSPACE\scripts\UiPathJobRun.ps1" $env:PROJECT_NAME $env:ORCH_URL $env:ORCH_TENANT -userKey $env:ORCH_USER_KEY -accountName $env:ORCH_ACC_NAME -folder_organization_unit $env:FOLDER_ORG_UNIT -machine $env:MACHINE -robots $env:ROBOT -uipathCliFilePath $env:UIPATH_CLI_PATH -timeout $env:TIMEOUT_SEC
+            echo "PROJECT_NAME from config: ${{ env.PROJECT_NAME }}"
+            ${{ github.workspace }}\scripts\UiPathJobRun.ps1 ${{ env.PROJECT_NAME }} ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -userKey ${{env.ORCH_USER_KEY}} -accountName ${{env.ORCH_ACC_NAME}} -folder_organization_unit ${{ env.FOLDER_ORG_UNIT }} -machine ${{ env.MACHINE }} -robots ${{ env.ROBOT }} -uipathCliFilePath ${{ env.UIPATH_CLI_PATH }} -timeout ${{ env.TIMEOUT_SEC }}
 
   publish-uipath-nuget-package:
     needs: [run-uipath-nuget-package, config]
